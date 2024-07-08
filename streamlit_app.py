@@ -1,7 +1,7 @@
 import streamlit as st
 import pymysql
 import pandas as pd
-import matplotlib.pyplot as plt
+import plotly.express as px
 
 # Database connection
 def get_db_connection():
@@ -32,14 +32,10 @@ def main():
     # Display data
     st.write('### Sakila Results Data', df)
     
-    # Plotting a graph
+    # Plotting a graph using Plotly
     st.write('### Penalty Distribution')
-    fig, ax = plt.subplots()
-    df['Penalty'].hist(ax=ax, bins=20)
-    ax.set_title('Penalty Distribution')
-    ax.set_xlabel('Penalty')
-    ax.set_ylabel('Frequency')
-    st.pyplot(fig)
+    fig = px.histogram(df, x='Penalty', nbins=20, title='Penalty Distribution')
+    st.plotly_chart(fig)
     
     # You can add more plots and analyses as needed
     
