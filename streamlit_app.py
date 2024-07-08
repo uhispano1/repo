@@ -8,9 +8,9 @@ import plotly.express as px
 def get_db_connection():
     return mysql.connector.connect(
         host='sql3.freesqldatabase.com',
-        user='sql3718581',
-        password='SjRPyzyhzc',
-        database='sql3718581'
+        user='sql3718601',
+        password='XVdeEw7sCw',
+        database='sql3718601'
     )
 
 # Query to retrieve data
