@@ -1,2 +1,2 @@
 pymysql==1.1.1
-matplotlib==1.4.2
+matplotlib
