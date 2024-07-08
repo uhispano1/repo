@@ -1,17 +1,16 @@
 import streamlit as st
-import pymysql
+import mysql.connector
 import pandas as pd
 import plotly.express as px
 
 # Database connection
+
 def get_db_connection():
-    return pymysql.connect(
-        host='sql3.freesqldatabase.com',
+    return mysql.connector.connect(
+        host='sql3.freesqldatabase.com'',
         user='sql3718581',
         password='SjRPyzyhzc',
-        db='sql3718581',
-        charset='utf8mb4',
-        cursorclass=pymysql.cursors.DictCursor
+        database='sql3718581'
     )
 
 # Query to retrieve data
