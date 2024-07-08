@@ -1,15 +1,17 @@
 import streamlit as st
-import mysql.connector
+import pymysql
 import pandas as pd
 import matplotlib.pyplot as plt
 
 # Database connection
 def get_db_connection():
-    return mysql.connector.connect(
+    return pymysql.connect(
         host='sql3.freesqldatabase.com',
         user='sql3718581',
         password='SjRPyzyhzc',
-        database='sql3718581'
+        db='sql3718581',
+        charset='utf8mb4',
+        cursorclass=pymysql.cursors.DictCursor
     )
 
 # Query to retrieve data
