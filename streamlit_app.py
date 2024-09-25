@@ -8,9 +8,9 @@ import pyodbc
 def fetch_data():
     # Datos de conexión a SQL Server
     host = '13.67.133.149'
-    database = 'NombreDeLaBaseDeDatos'  # Reemplaza con el nombre de tu base de datos
+    database = 'Demo'  # Reemplaza con el nombre de tu base de datos
     user = 'streamlit'
-    password = 'UHISPANO'
+    password = 'uhispano2024#'
     driver = '{ODBC Driver 17 for SQL Server}'  # Asegúrate de tener el driver correcto
     
     # Crear la cadena de conexión para SQL Server
