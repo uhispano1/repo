@@ -29,7 +29,7 @@ def fetch_data():
     # Traer todos los resultados de la consulta
     result = cursor.fetchall()
     # Crear el DataFrame a partir de los resultados
-    df = pd.DataFrame(result)
+    df = pd.DataFrame(result, columns=['nombre'])
     
     cursor.close()
     conn.close()
