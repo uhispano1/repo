@@ -27,7 +27,7 @@ def fetch_data():
     #columns = [column[0] for column in cursor.description]
     
     # Traer todos los resultados de la consulta
-    result = [row[0] for row in cursor.fetchall()]
+    result = [list(row) for row in cursor.fetchall()]    
     # Crear el DataFrame a partir de los resultados
     df = pd.DataFrame(result, columns=['nombre'])
     
