@@ -21,7 +21,7 @@ def fetch_data():
     cursor = conn.cursor()
     
     # Ejecutar una consulta
-    cursor.execute("SELECT * FROM ejemplo_tabla;")
+    cursor.execute("SELECT * FROM Clientes;")
     
     # Obtener los nombres de las columnas
     columns = [column[0] for column in cursor.description]
