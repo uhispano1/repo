@@ -2,22 +2,36 @@ import streamlit as st
 import mysql.connector
 import pandas as pd
 import plotly.express as px
+import pyodbc
 
-# Database connection
 
-def get_db_connection():
-    return mysql.connector.connect(
-        host='sql3.freesqldatabase.com',
-        user='sql3718601',
-        password='XVdeEw7sCw',
-        database='sql3718601'
-    )
-
-# Query to retrieve data
 def fetch_data():
-    conn = get_db_connection()
-    query = "SELECT * FROM tableau_analytics"
-    df = pd.read_sql(query, conn)
+    # Datos de conexión a SQL Server
+    host = '13.67.133.149'
+    database = 'NombreDeLaBaseDeDatos'  # Reemplaza con el nombre de tu base de datos
+    user = 'streamlit'
+    password = 'UHISPANO'
+    driver = '{ODBC Driver 17 for SQL Server}'  # Asegúrate de tener el driver correcto
+    
+    # Crear la cadena de conexión para SQL Server
+    connection_string = f'DRIVER={driver};SERVER={host};DATABASE={database};UID={user};PWD={password}'
+    
+    # Conectar a la base de datos SQL Server
+    conn = pyodbc.connect(connection_string)
+    cursor = conn.cursor()
+    
+    # Ejecutar una consulta
+    cursor.execute("SELECT * FROM ejemplo_tabla;")
+    
+    # Obtener los nombres de las columnas
+    columns = [column[0] for column in cursor.description]
+    
+    # Traer todos los resultados de la consulta
+    result = cursor.fetchall()
+    # Crear el DataFrame a partir de los resultados
+    df = pd.DataFrame(result, columns=columns)
+    
+    cursor.close()
     conn.close()
     return df
 
@@ -32,9 +46,9 @@ def main():
     st.write('### Sakila Results Data', df)
     
     # Plotting a graph using Plotly
-    st.write('### Penalty Distribution')
-    fig = px.histogram(df, x='Penalty', nbins=20, title='Penalty Distribution')
-    st.plotly_chart(fig)
+    #st.write('### Penalty Distribution')
+    #fig = px.histogram(df, x='Penalty', nbins=20, title='Penalty Distribution')
+    #st.plotly_chart(fig)
     
     # You can add more plots and analyses as needed
     
