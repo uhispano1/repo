@@ -44,7 +44,7 @@ def main():
     
     # Plotting a graph using Plotly
     st.write('### Person Distribution')
-    fig = px.histogram(df, x='EmailPromotion', nbins=20, title='Person Distribution')
+    fig = px.histogram(df, x='Suffix', nbins=20, title='Person Distribution')
     st.plotly_chart(fig)
 
      # Fetch data
