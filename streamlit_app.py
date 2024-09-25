@@ -5,7 +5,7 @@ import plotly.express as px
 import pyodbc
 
 
-def fetch_data():
+def fetch_data(sql):
     # Datos de conexión a SQL Server
     host = '13.67.133.149'
     database = 'Demo'  # Reemplaza con el nombre de tu base de datos
@@ -21,7 +21,7 @@ def fetch_data():
     cursor = conn.cursor()
     
     # Ejecutar una consulta
-    cursor.execute("SELECT top 20 * FROM Person;")
+    cursor.execute(sql)
     
     # Obtener los nombres de las columnas
     columns = [column[0] for column in cursor.description]
@@ -40,16 +40,19 @@ def main():
     st.title('SQL Server Results Analysis')
     
     # Fetch data
-    df = fetch_data()
-    
-    # Display data
-    st.write('### Person Results Data', df)
+    df = fetch_data("SELECT * FROM Person;")
     
     # Plotting a graph using Plotly
     st.write('### Person Distribution')
     fig = px.histogram(df, x='EmailPromotion', nbins=20, title='Person Distribution')
     st.plotly_chart(fig)
+
+     # Fetch data
+    df = fetch_data("SELECT top 10 * FROM Person;")
     
+    # Display data
+    st.write('### Person Results Data', df)
+
     # You can add more plots and analyses as needed
     
 if __name__ == '__main__':
