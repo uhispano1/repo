@@ -37,18 +37,18 @@ def fetch_data():
 
 # Main function
 def main():
-    st.title('Sakila Results Analysis')
+    st.title('SQL Server Results Analysis')
     
     # Fetch data
     df = fetch_data()
     
     # Display data
-    st.write('### Sakila Results Data', df)
+    st.write('### Person Results Data', df)
     
     # Plotting a graph using Plotly
-    #st.write('### Penalty Distribution')
-    #fig = px.histogram(df, x='Penalty', nbins=20, title='Penalty Distribution')
-    #st.plotly_chart(fig)
+    st.write('### Person Distribution')
+    fig = px.histogram(df, x='EmailPromotion', nbins=20, title='Person Distribution')
+    st.plotly_chart(fig)
     
     # You can add more plots and analyses as needed
     
