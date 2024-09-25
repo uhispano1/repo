@@ -24,12 +24,12 @@ def fetch_data():
     cursor.execute("SELECT * FROM Clientes;")
     
     # Obtener los nombres de las columnas
-    #columns = [column[0] for column in cursor.description]
+    columns = [column[0] for column in cursor.description]
     
     # Traer todos los resultados de la consulta
-    result = [list(row) for row in cursor.fetchall()]    
+    result = [list(row) for row in cursor.fetchall()]
     # Crear el DataFrame a partir de los resultados
-    df = pd.DataFrame(result, columns=['nombre'])
+    df = pd.DataFrame(result, columns=columns)
     
     cursor.close()
     conn.close()
